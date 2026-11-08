@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use this analysis or code, please cite it as below."
+title: "Retail Customer Segmentation"
+abstract: "Customer segmentation for a UK online retailer: reason-coded cleaning, RFM and k-means segments validated out of time, a BG/NBD model implemented from the paper, and a formula-driven Excel segment pack."
+authors:
+  - family-names: Odimayo
+    given-names: Oluwagbade
+repository-code: "https://github.com/gbadedata/retail-customer-segmentation"
+url: "https://gbadedata.com"
+license: MIT
+version: "1.0.0"
+date-released: "2026-11-08"
+keywords:
+  - customer segmentation
+  - RFM
+  - k-means
+  - customer lifetime value
+  - BG/NBD
+references:
+  - type: dataset
+    title: "Online Retail II"
+    authors:
+      - family-names: Chen
+        given-names: Daqing
+    year: 2012
+    doi: "10.24432/C5CG6D"
+    publisher:
+      name: "UCI Machine Learning Repository"
+  - type: article
+    title: "Counting Your Customers the Easy Way: An Alternative to the Pareto/NBD Model"
+    authors:
+      - family-names: Fader
+        given-names: Peter S.
+      - family-names: Hardie
+        given-names: Bruce G. S.
+      - family-names: Lee
+        given-names: Ka Lok
+    journal: "Marketing Science"
+    volume: 24
+    issue: 2
+    year: 2005
+    start: 275
+    end: 284

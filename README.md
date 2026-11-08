@@ -7,6 +7,8 @@
 ![Code: MIT](https://img.shields.io/badge/code-MIT-green)
 ![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey)
 
+**Built with:** Python · pandas · scikit-learn · SciPy · matplotlib · openpyxl · LibreOffice (headless) · pytest · GitHub Actions
+
 This project segments the customers of a UK online retailer and then tests the segments the way a business would rely on them: **built on one date, judged on what customers did afterwards**. The data is 1,067,371 invoice lines from UCI Online Retail II (December 2009 to December 2011). It starts with cleaning that reconciles every line to the penny, and ends with an Excel pack a marketing or account team can filter and look customers up in.
 
 <p align="center"><img src="figures/05_segment_value_next_6m.png" width="760" alt="Share of customers vs share of next-six-month spend by RFM segment"></p>
@@ -17,6 +19,7 @@ This project segments the customers of a UK online retailer and then tests the s
 - [Key findings](#key-findings)
 - [What I would recommend](#what-i-would-recommend)
 - [The Excel segment pack](#the-excel-segment-pack)
+- [The data](#the-data)
 - [How it works](#how-it-works)
 - [Mistakes this analysis is built to avoid](#mistakes-this-analysis-is-built-to-avoid)
 - [Reproduce it](#reproduce-it)
@@ -31,7 +34,7 @@ The segments are built on the **December 2010** snapshot and applied unchanged a
 |---|---|---|
 | How concentrated is spend? | Top 10% of customers = **59.1%** of 12-month spend; top 20% = 73.0% | [Spend concentration](figures/07_spend_concentration.png) |
 | Who carries the business? | Champions and Loyal: **37.8%** of customers, **82.5%** of next-period spend | Champions alone: 16.2% of customers, 58.2% of spend, 91% reordered |
-| How many natural segments are there? | **4**, chosen by a rule fixed before seeing results | Bootstrap stability (ARI) 0.93; 7 or more segments were unstable |
+| How many segments hold up? | **4**, chosen by a rule fixed before seeing results | Bootstrap stability (ARI) 0.93; 7 or more segments were unstable |
 | Do segments predict who buys again? | Yes. The simple **RFM total score is as good as a per-customer BG/NBD model** | ROC AUC 0.780 (0.767 to 0.792) vs 0.777 (0.764 to 0.790) |
 | Where are customers lost? | At the **second order** | 64% of December's "New customers" had slipped to Hibernating by June |
 | Can the raw data be trusted as-is? | No. **22,523 rows** (£377,488) are double-counted across the source files | All verified as exact copies; every line reconciles to £0.00 |
@@ -46,7 +49,7 @@ The segments are built on the **December 2010** snapshot and applied unchanged a
 
 **3. K-means picked four segments, and they are stable.** Candidates from 2 to 8 segments were compared on separation (silhouette, Davies-Bouldin, Calinski-Harabasz) and on bootstrap stability. Two segments separate best, but they are too coarse to act on. The rule (at least 3 segments, stability of at least 0.80, then best silhouette) selects 4. The top cluster, "recent, frequent, high spend", is 13.2% of customers and produced 62.2% of next-period spend, with 96% reordering. ([choosing k](figures/02_choosing_k.png), [profiles](figures/03_cluster_profiles.png))
 
-**4. A simple score is as good as a sophisticated model.** Each segmentation's repeat rates and spend were learned on December 2010 outcomes, applied at June 2011, and scored against what customers actually did. The RFM total score matched a BG/NBD model that scores every customer individually. The ten named RFM segments do well on who reorders (AUC 0.758) but are the weakest on spend (Spearman 0.522), because the standard grid ignores spend entirely.
+**4. A simple score is as good as a sophisticated model.** Each segmentation's repeat rates and spend were learned on December 2010 outcomes, applied at June 2011, and scored against what customers actually did. The RFM total score (ROC AUC 0.780 for who reorders, Spearman 0.590 for spend) matched a BG/NBD model that scores every customer individually (0.777 and 0.599), with overlapping intervals on both. The ten named RFM segments do well on who reorders (AUC 0.758) but are the weakest on spend (Spearman 0.522), because the standard grid ignores spend entirely.
 
 <p align="center"><img src="figures/04_out_of_time_validation.png" width="760" alt="Out-of-time validation of six segmentation schemes with bootstrap intervals"></p>
 
@@ -77,6 +80,17 @@ The segments are built on the **December 2010** snapshot and applied unchanged a
 <p align="center"><img src="docs/excel_customer_lookup.png" width="640" alt="Customer lookup sheet"></p>
 
 The workbook has 134 formulas and zero errors. A test recalculates it under two market settings and checks the results against pandas.
+
+## The data
+
+UCI Online Retail II holds one row per invoice line, split across two yearly files:
+
+| File | Rows | Period |
+|---|---:|---|
+| `online_retail_II.csv` (sheet "Year 2009-2010") | 525,461 | 1 Dec 2009 to 9 Dec 2010 |
+| `online_retail_II2.csv` (sheet "Year 2010-2011") | 541,910 | 1 Dec 2010 to 9 Dec 2011 |
+
+The fields are `Invoice` (a leading C marks a cancellation), `StockCode`, `Description`, `Quantity`, `InvoiceDate` (day first), `Price` (£ per unit), `Customer ID` and `Country`. After cleaning, 776,579 purchase lines and 17,586 return lines remain, from 5,852 identified customers. Most customers are in the UK (91.5% at the June 2011 snapshot), and many are wholesalers.
 
 ## How it works
 
