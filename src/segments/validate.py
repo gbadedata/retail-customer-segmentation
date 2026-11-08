@@ -37,7 +37,7 @@ def evaluate(fit_df: pd.DataFrame, test_df: pd.DataFrame, col: str) -> tuple[dic
         "spend_spearman": float(stats.spearmanr(p_spend, test_df["next_spend"]).statistic),
     }
     observed = segment_stats(test_df, col)
-    calib = learned.join(observed, lsuffix="_fit", rsuffix="_test", how="outer")
+    calib = learned.add_suffix("_fit").join(observed.add_suffix("_test"), how="outer")
     return metrics, calib
 
 
