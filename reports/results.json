@@ -1,0 +1,916 @@
+{
+  "settings": {
+    "snapshot_fit": "2010-12-01",
+    "snapshot_test": "2011-06-01",
+    "lookback_months": 12,
+    "horizon_months": 6,
+    "k_min": 2,
+    "k_max": 8,
+    "k_floor": 3,
+    "stability_reps": 30,
+    "stability_min_ari": 0.8,
+    "bootstrap_reps": 500,
+    "seed": 11
+  },
+  "cleaning": {
+    "log": [
+      {
+        "reason": "purchase",
+        "description": "Kept: product sale to a known customer",
+        "rows": 776579,
+        "value": 17068582.72,
+        "share_of_rows": 0.727562394
+      },
+      {
+        "reason": "return",
+        "description": "Kept: cancelled product line from a known customer",
+        "rows": 17586,
+        "value": -709953.43,
+        "share_of_rows": 0.0164759957
+      },
+      {
+        "reason": "overlap_duplicate",
+        "description": "Row from the 2010-11 file that repeats a row already in the 2009-10 file (1-9 Dec 2010)",
+        "rows": 22523,
+        "value": 377488.45,
+        "share_of_rows": 0.021101379
+      },
+      {
+        "reason": "missing_customer",
+        "description": "No customer ID, so it cannot be tied to a customer",
+        "rows": 235287,
+        "value": 2566093.08,
+        "share_of_rows": 0.2204360058
+      },
+      {
+        "reason": "non_product",
+        "description": "Postage, fees, manual adjustments, bad-debt write-offs, vouchers or test lines",
+        "rows": 3671,
+        "value": -68262.292,
+        "share_of_rows": 0.0034392915
+      },
+      {
+        "reason": "bad_price",
+        "description": "Price of zero or less",
+        "rows": 60,
+        "value": 0.0,
+        "share_of_rows": 5.62129e-05
+      },
+      {
+        "reason": "bad_quantity",
+        "description": "Zero or negative quantity on a normal invoice, or positive quantity on a cancellation",
+        "rows": 0,
+        "value": 0.0,
+        "share_of_rows": 0.0
+      },
+      {
+        "reason": "exact_duplicate",
+        "description": "Identical to an earlier row in every field",
+        "rows": 11665,
+        "value": 53302.04,
+        "share_of_rows": 0.0109287211
+      }
+    ],
+    "reconciliation": {
+      "raw_rows": 1067371,
+      "accounted_rows": 1067371,
+      "raw_value": 19287250.568,
+      "accounted_value": 19287250.568,
+      "difference": 0.0,
+      "balanced": true
+    },
+    "overlap": {
+      "rows": 22523,
+      "matched": 22523,
+      "unmatched": 0,
+      "from": "2010-12-01",
+      "to": "2010-12-09"
+    }
+  },
+  "snapshots": {
+    "fit": {
+      "snapshot": "2010-12-01",
+      "lookback_start": "2009-12-01",
+      "horizon_end": "2011-06-01",
+      "excluded_non_positive": 15,
+      "customers": 4224,
+      "repeat_rate": 0.4836647727272727,
+      "pareto": {
+        "top_10pct": 0.5930136946628193,
+        "top_20pct": 0.7300490535584688,
+        "top_50pct": 0.9177213326386068
+      },
+      "uk_share": 0.9237689393939394
+    },
+    "test": {
+      "snapshot": "2011-06-01",
+      "lookback_start": "2010-06-01",
+      "horizon_end": "2011-12-01",
+      "excluded_non_positive": 8,
+      "customers": 4316,
+      "repeat_rate": 0.5708989805375347,
+      "pareto": {
+        "top_10pct": 0.5906990899117399,
+        "top_20pct": 0.7299110503622465,
+        "top_50pct": 0.9150988406934091
+      },
+      "uk_share": 0.9154309545875811
+    }
+  },
+  "rfm": {
+    "summary": [
+      {
+        "rfm_segment": "Champions",
+        "customers": 698,
+        "spend_12m": 4061524.29,
+        "median_spend_12m": 2419.295,
+        "median_recency_days": 12.0,
+        "median_orders": 7.0,
+        "repeat_rate_next6m": 0.9097421203,
+        "next_spend": 2386485.86,
+        "share_customers": 0.1617238184,
+        "share_spend_12m": 0.5251242009,
+        "share_next_spend": 0.5815497994
+      },
+      {
+        "rfm_segment": "Loyal",
+        "customers": 934,
+        "spend_12m": 2141753.23,
+        "median_spend_12m": 1478.32,
+        "median_recency_days": 64.0,
+        "median_orders": 5.0,
+        "repeat_rate_next6m": 0.7847965739,
+        "next_spend": 999880.47,
+        "share_customers": 0.2164040778,
+        "share_spend_12m": 0.2769124036,
+        "share_next_spend": 0.2436554503
+      },
+      {
+        "rfm_segment": "Potential loyalists",
+        "customers": 234,
+        "spend_12m": 153028.05,
+        "median_spend_12m": 527.54,
+        "median_recency_days": 29.0,
+        "median_orders": 2.0,
+        "repeat_rate_next6m": 0.6025641026,
+        "next_spend": 96901.16,
+        "share_customers": 0.0542168675,
+        "share_spend_12m": 0.019785363,
+        "share_next_spend": 0.0236133183
+      },
+      {
+        "rfm_segment": "New customers",
+        "customers": 88,
+        "spend_12m": 40665.02,
+        "median_spend_12m": 308.005,
+        "median_recency_days": 12.5,
+        "median_orders": 1.0,
+        "repeat_rate_next6m": 0.5454545455,
+        "next_spend": 40792.51,
+        "share_customers": 0.0203892493,
+        "share_spend_12m": 0.0052576778,
+        "share_next_spend": 0.0099405056
+      },
+      {
+        "rfm_segment": "Promising",
+        "customers": 178,
+        "spend_12m": 54491.24,
+        "median_spend_12m": 241.5,
+        "median_recency_days": 50.0,
+        "median_orders": 1.0,
+        "repeat_rate_next6m": 0.4494382022,
+        "next_spend": 48859.47,
+        "share_customers": 0.0412418906,
+        "share_spend_12m": 0.0070453029,
+        "share_next_spend": 0.0119062993
+      },
+      {
+        "rfm_segment": "Need attention",
+        "customers": 177,
+        "spend_12m": 122225.41,
+        "median_spend_12m": 515.86,
+        "median_recency_days": 119.0,
+        "median_orders": 2.0,
+        "repeat_rate_next6m": 0.5141242938,
+        "next_spend": 59804.8,
+        "share_customers": 0.0410101946,
+        "share_spend_12m": 0.0158028159,
+        "share_next_spend": 0.0145735074
+      },
+      {
+        "rfm_segment": "About to sleep",
+        "customers": 271,
+        "spend_12m": 88728.42,
+        "median_spend_12m": 240.1,
+        "median_recency_days": 102.0,
+        "median_orders": 1.0,
+        "repeat_rate_next6m": 0.3357933579,
+        "next_spend": 46426.8,
+        "share_customers": 0.06278962,
+        "share_spend_12m": 0.0114719099,
+        "share_next_spend": 0.0113134952
+      },
+      {
+        "rfm_segment": "Can't lose them",
+        "customers": 45,
+        "spend_12m": 150844.75,
+        "median_spend_12m": 1694.35,
+        "median_recency_days": 190.0,
+        "median_orders": 6.0,
+        "repeat_rate_next6m": 0.6,
+        "next_spend": 41115.59,
+        "share_customers": 0.0104263207,
+        "share_spend_12m": 0.0195030789,
+        "share_next_spend": 0.0100192352
+      },
+      {
+        "rfm_segment": "At risk",
+        "customers": 675,
+        "spend_12m": 565705.53,
+        "median_spend_12m": 619.08,
+        "median_recency_days": 208.0,
+        "median_orders": 2.0,
+        "repeat_rate_next6m": 0.4592592593,
+        "next_spend": 212125.04,
+        "share_customers": 0.15639481,
+        "share_spend_12m": 0.0731414226,
+        "share_next_spend": 0.0516916008
+      },
+      {
+        "rfm_segment": "Hibernating",
+        "customers": 1016,
+        "spend_12m": 355441.05,
+        "median_spend_12m": 245.225,
+        "median_recency_days": 237.5,
+        "median_orders": 1.0,
+        "repeat_rate_next6m": 0.3031496063,
+        "next_spend": 171273.82,
+        "share_customers": 0.2354031511,
+        "share_spend_12m": 0.0459558245,
+        "share_next_spend": 0.0417367885
+      }
+    ]
+  },
+  "clustering": {
+    "k": 4,
+    "k_selection": [
+      {
+        "k": 2,
+        "inertia": 6665.199236107,
+        "silhouette": 0.4135188215,
+        "davies_bouldin": 0.9372681162,
+        "calinski_harabasz": 3804.9470736416,
+        "ari_mean": 0.969243553,
+        "ari_min": 0.88491455,
+        "stable": true,
+        "chosen": false
+      },
+      {
+        "k": 3,
+        "inertia": 5098.6394133088,
+        "silhouette": 0.3191991011,
+        "davies_bouldin": 1.0989950417,
+        "calinski_harabasz": 3135.0574081188,
+        "ari_mean": 0.9057308278,
+        "ari_min": 0.8058615538,
+        "stable": true,
+        "chosen": false
+      },
+      {
+        "k": 4,
+        "inertia": 4003.6728283482,
+        "silhouette": 0.3396920591,
+        "davies_bouldin": 0.9786954591,
+        "calinski_harabasz": 3045.5938257042,
+        "ari_mean": 0.9309514729,
+        "ari_min": 0.8727636737,
+        "stable": true,
+        "chosen": true
+      },
+      {
+        "k": 5,
+        "inertia": 3406.6958281156,
+        "silhouette": 0.3253127289,
+        "davies_bouldin": 1.0005522432,
+        "calinski_harabasz": 2868.6454795797,
+        "ari_mean": 0.9026983654,
+        "ari_min": 0.6206799649,
+        "stable": true,
+        "chosen": false
+      },
+      {
+        "k": 6,
+        "inertia": 2968.896571476,
+        "silhouette": 0.3049121931,
+        "davies_bouldin": 0.9941648905,
+        "calinski_harabasz": 2757.1770622544,
+        "ari_mean": 0.8809184179,
+        "ari_min": 0.676549881,
+        "stable": true,
+        "chosen": false
+      },
+      {
+        "k": 7,
+        "inertia": 2694.8075067846,
+        "silhouette": 0.2976528483,
+        "davies_bouldin": 1.0045165175,
+        "calinski_harabasz": 2602.1662884654,
+        "ari_mean": 0.7805615304,
+        "ari_min": 0.4142112888,
+        "stable": false,
+        "chosen": false
+      },
+      {
+        "k": 8,
+        "inertia": 2463.0896793779,
+        "silhouette": 0.291243959,
+        "davies_bouldin": 1.0075390412,
+        "calinski_harabasz": 2496.4867845871,
+        "ari_mean": 0.7126344704,
+        "ari_min": 0.3786963074,
+        "stable": false,
+        "chosen": false
+      }
+    ],
+    "names": {
+      "1": "recent, frequent, high spend",
+      "2": "lapsing, regular, high spend",
+      "3": "recent, regular, mid spend",
+      "4": "lapsed, infrequent, low spend"
+    },
+    "tertiles": {
+      "recency_days": [
+        23.0,
+        85.0
+      ],
+      "frequency": [
+        1.0,
+        4.0
+      ],
+      "monetary": [
+        384.54,
+        1214.4366666666663
+      ]
+    },
+    "profiles": [
+      {
+        "cluster": 1,
+        "name": "recent, frequent, high spend",
+        "customers": 569,
+        "spend_12m": 4590723.12,
+        "median_spend_12m": 3941.81,
+        "median_recency_days": 13.0,
+        "median_orders": 11.0,
+        "repeat_rate_next6m": 0.9595782074,
+        "next_spend": 2554301.17,
+        "share_customers": 0.1318350324,
+        "share_spend_12m": 0.5935455848,
+        "share_next_spend": 0.6224438024
+      },
+      {
+        "cluster": 2,
+        "name": "lapsing, regular, high spend",
+        "customers": 1361,
+        "spend_12m": 2223066.09,
+        "median_spend_12m": 1237.62,
+        "median_recency_days": 90.0,
+        "median_orders": 4.0,
+        "repeat_rate_next6m": 0.6936076414,
+        "next_spend": 1014580.17,
+        "share_customers": 0.3153382762,
+        "share_spend_12m": 0.287425538,
+        "share_next_spend": 0.2472375405
+      },
+      {
+        "cluster": 3,
+        "name": "recent, regular, mid spend",
+        "customers": 398,
+        "spend_12m": 262933.47,
+        "median_spend_12m": 569.32,
+        "median_recency_days": 13.0,
+        "median_orders": 2.0,
+        "repeat_rate_next6m": 0.6809045226,
+        "next_spend": 195523.65,
+        "share_customers": 0.0922150139,
+        "share_spend_12m": 0.0339952979,
+        "share_next_spend": 0.0476460981
+      },
+      {
+        "cluster": 4,
+        "name": "lapsed, infrequent, low spend",
+        "customers": 1988,
+        "spend_12m": 657684.31,
+        "median_spend_12m": 289.775,
+        "median_recency_days": 203.0,
+        "median_orders": 1.0,
+        "repeat_rate_next6m": 0.3536217304,
+        "next_spend": 339260.53,
+        "share_customers": 0.4606116775,
+        "share_spend_12m": 0.0850335793,
+        "share_next_spend": 0.082672559
+      }
+    ]
+  },
+  "validation": {
+    "schemes": [
+      {
+        "scheme": "rfm_segment",
+        "label": "RFM named segments (10)",
+        "segments": 10.0,
+        "repeat_auc": 0.7584730924,
+        "spend_spearman": 0.5224268516,
+        "repeat_auc_low": 0.7443430729,
+        "repeat_auc_high": 0.7725121642,
+        "spend_spearman_low": 0.4972835275,
+        "spend_spearman_high": 0.5437960379
+      },
+      {
+        "scheme": "cluster",
+        "label": "K-means segments (4)",
+        "segments": 4.0,
+        "repeat_auc": 0.7345047299,
+        "spend_spearman": 0.5536202786,
+        "repeat_auc_low": 0.7209386122,
+        "repeat_auc_high": 0.7470757239,
+        "spend_spearman_low": 0.5282023933,
+        "spend_spearman_high": 0.5751710176
+      },
+      {
+        "scheme": "rfm_sum",
+        "label": "RFM score total (3-15)",
+        "segments": 13.0,
+        "repeat_auc": 0.7800272082,
+        "spend_spearman": 0.5897605216,
+        "repeat_auc_low": 0.7666673421,
+        "repeat_auc_high": 0.791971955,
+        "spend_spearman_low": 0.5670350981,
+        "spend_spearman_high": 0.6090296076
+      },
+      {
+        "scheme": "m_decile",
+        "label": "Spend deciles only (10)",
+        "segments": 10.0,
+        "repeat_auc": 0.7510824337,
+        "spend_spearman": 0.583862766,
+        "repeat_auc_low": 0.7372526446,
+        "repeat_auc_high": 0.7637154951,
+        "spend_spearman_low": 0.5593959099,
+        "spend_spearman_high": 0.6053439604
+      },
+      {
+        "scheme": "r_only",
+        "label": "Recency score only (5)",
+        "segments": 5.0,
+        "repeat_auc": 0.7220324728,
+        "spend_spearman": 0.4482282388,
+        "repeat_auc_low": 0.7077334933,
+        "repeat_auc_high": 0.7363551202,
+        "spend_spearman_low": 0.4213199013,
+        "spend_spearman_high": 0.4732922974
+      },
+      {
+        "scheme": "bgnbd",
+        "label": "BG/NBD per customer (no segments)",
+        "segments": null,
+        "repeat_auc": 0.7773799078,
+        "spend_spearman": 0.5985706006,
+        "repeat_auc_low": 0.7639557567,
+        "repeat_auc_high": 0.7901279545,
+        "spend_spearman_low": 0.5771117888,
+        "spend_spearman_high": 0.6214644822
+      }
+    ],
+    "rfm_calibration": [
+      {
+        "rfm_segment": "Champions",
+        "customers_fit": 520,
+        "repeat_rate_fit": 0.8538461538,
+        "mean_next_spend_fit": 2341.3444038462,
+        "customers_test": 698,
+        "repeat_rate_test": 0.9097421203,
+        "mean_next_spend_test": 3419.0341833811
+      },
+      {
+        "rfm_segment": "Loyal",
+        "customers_fit": 698,
+        "repeat_rate_fit": 0.7808022923,
+        "mean_next_spend_fit": 1216.1629942693,
+        "customers_test": 934,
+        "repeat_rate_test": 0.7847965739,
+        "mean_next_spend_test": 1070.5358351178
+      },
+      {
+        "rfm_segment": "Potential loyalists",
+        "customers_fit": 466,
+        "repeat_rate_fit": 0.482832618,
+        "mean_next_spend_fit": 318.2681545064,
+        "customers_test": 234,
+        "repeat_rate_test": 0.6025641026,
+        "mean_next_spend_test": 414.1075213675
+      },
+      {
+        "rfm_segment": "New customers",
+        "customers_fit": 108,
+        "repeat_rate_fit": 0.3611111111,
+        "mean_next_spend_fit": 206.4434259259,
+        "customers_test": 88,
+        "repeat_rate_test": 0.5454545455,
+        "mean_next_spend_test": 463.55125
+      },
+      {
+        "rfm_segment": "Promising",
+        "customers_fit": 177,
+        "repeat_rate_fit": 0.2881355932,
+        "mean_next_spend_fit": 157.8693785311,
+        "customers_test": 178,
+        "repeat_rate_test": 0.4494382022,
+        "mean_next_spend_test": 274.4914044944
+      },
+      {
+        "rfm_segment": "Need attention",
+        "customers_fit": 299,
+        "repeat_rate_fit": 0.4615384615,
+        "mean_next_spend_fit": 226.2328093645,
+        "customers_test": 177,
+        "repeat_rate_test": 0.5141242938,
+        "mean_next_spend_test": 337.8802259887
+      },
+      {
+        "rfm_segment": "About to sleep",
+        "customers_fit": 261,
+        "repeat_rate_fit": 0.2835249042,
+        "mean_next_spend_fit": 110.5545210728,
+        "customers_test": 271,
+        "repeat_rate_test": 0.3357933579,
+        "mean_next_spend_test": 171.3166051661
+      },
+      {
+        "rfm_segment": "Can't lose them",
+        "customers_fit": 100,
+        "repeat_rate_fit": 0.6,
+        "mean_next_spend_fit": 589.7355,
+        "customers_test": 45,
+        "repeat_rate_test": 0.6,
+        "mean_next_spend_test": 913.6797777778
+      },
+      {
+        "rfm_segment": "At risk",
+        "customers_fit": 729,
+        "repeat_rate_fit": 0.4074074074,
+        "mean_next_spend_fit": 268.0400137174,
+        "customers_test": 675,
+        "repeat_rate_test": 0.4592592593,
+        "mean_next_spend_test": 314.2593185185
+      },
+      {
+        "rfm_segment": "Hibernating",
+        "customers_fit": 866,
+        "repeat_rate_fit": 0.1963048499,
+        "mean_next_spend_fit": 95.9201501155,
+        "customers_test": 1016,
+        "repeat_rate_test": 0.3031496063,
+        "mean_next_spend_test": 168.5765944882
+      }
+    ]
+  },
+  "bgnbd": {
+    "r": 0.9518818819772269,
+    "alpha": 12.129396268191076,
+    "a": 0.1696211277678142,
+    "b": 8.170275424966894,
+    "log_likelihood": -55291.00950800764,
+    "horizon_weeks": 26.142857142857142
+  },
+  "migration": [
+    {
+      "rfm_segment": "Champions",
+      "Champions": 0.4307692308,
+      "Loyal": 0.4019230769,
+      "Potential loyalists": 0.0038461538,
+      "New customers": 0.0,
+      "Promising": 0.0,
+      "Need attention": 0.0019230769,
+      "About to sleep": 0.0,
+      "Can't lose them": 0.0192307692,
+      "At risk": 0.1384615385,
+      "Hibernating": 0.0038461538,
+      "No purchase in 12 months": 0.0
+    },
+    {
+      "rfm_segment": "Loyal",
+      "Champions": 0.2994269341,
+      "Loyal": 0.435530086,
+      "Potential loyalists": 0.0071633238,
+      "New customers": 0.0,
+      "Promising": 0.0,
+      "Need attention": 0.0114613181,
+      "About to sleep": 0.0,
+      "Can't lose them": 0.0386819484,
+      "At risk": 0.1905444126,
+      "Hibernating": 0.0171919771,
+      "No purchase in 12 months": 0.0
+    },
+    {
+      "rfm_segment": "Potential loyalists",
+      "Champions": 0.1137339056,
+      "Loyal": 0.2768240343,
+      "Potential loyalists": 0.0193133047,
+      "New customers": 0.0,
+      "Promising": 0.0,
+      "Need attention": 0.0300429185,
+      "About to sleep": 0.0,
+      "Can't lose them": 0.0021459227,
+      "At risk": 0.4012875536,
+      "Hibernating": 0.1566523605,
+      "No purchase in 12 months": 0.0
+    },
+    {
+      "rfm_segment": "New customers",
+      "Champions": 0.0462962963,
+      "Loyal": 0.1203703704,
+      "Potential loyalists": 0.0555555556,
+      "New customers": 0.0,
+      "Promising": 0.0,
+      "Need attention": 0.0833333333,
+      "About to sleep": 0.0,
+      "Can't lose them": 0.0,
+      "At risk": 0.0555555556,
+      "Hibernating": 0.6388888889,
+      "No purchase in 12 months": 0.0
+    },
+    {
+      "rfm_segment": "Promising",
+      "Champions": 0.0790960452,
+      "Loyal": 0.0790960452,
+      "Potential loyalists": 0.0451977401,
+      "New customers": 0.0,
+      "Promising": 0.0,
+      "Need attention": 0.0790960452,
+      "About to sleep": 0.0,
+      "Can't lose them": 0.0,
+      "At risk": 0.0056497175,
+      "Hibernating": 0.7062146893,
+      "No purchase in 12 months": 0.0056497175
+    },
+    {
+      "rfm_segment": "Need attention",
+      "Champions": 0.1070234114,
+      "Loyal": 0.1906354515,
+      "Potential loyalists": 0.0334448161,
+      "New customers": 0.0,
+      "Promising": 0.0,
+      "Need attention": 0.0936454849,
+      "About to sleep": 0.0,
+      "Can't lose them": 0.0,
+      "At risk": 0.3277591973,
+      "Hibernating": 0.2474916388,
+      "No purchase in 12 months": 0.0
+    },
+    {
+      "rfm_segment": "About to sleep",
+      "Champions": 0.030651341,
+      "Loyal": 0.0574712644,
+      "Potential loyalists": 0.0804597701,
+      "New customers": 0.0,
+      "Promising": 0.0,
+      "Need attention": 0.091954023,
+      "About to sleep": 0.0,
+      "Can't lose them": 0.0,
+      "At risk": 0.0229885057,
+      "Hibernating": 0.7126436782,
+      "No purchase in 12 months": 0.0038314176
+    },
+    {
+      "rfm_segment": "Can't lose them",
+      "Champions": 0.16,
+      "Loyal": 0.34,
+      "Potential loyalists": 0.01,
+      "New customers": 0.0,
+      "Promising": 0.0,
+      "Need attention": 0.02,
+      "About to sleep": 0.02,
+      "Can't lose them": 0.07,
+      "At risk": 0.25,
+      "Hibernating": 0.03,
+      "No purchase in 12 months": 0.1
+    },
+    {
+      "rfm_segment": "At risk",
+      "Champions": 0.0905349794,
+      "Loyal": 0.1399176955,
+      "Potential loyalists": 0.0507544582,
+      "New customers": 0.0041152263,
+      "Promising": 0.0164609053,
+      "Need attention": 0.0480109739,
+      "About to sleep": 0.037037037,
+      "Can't lose them": 0.0,
+      "At risk": 0.19478738,
+      "Hibernating": 0.2263374486,
+      "No purchase in 12 months": 0.1920438957
+    },
+    {
+      "rfm_segment": "Hibernating",
+      "Champions": 0.0219399538,
+      "Loyal": 0.0219399538,
+      "Potential loyalists": 0.0369515012,
+      "New customers": 0.0150115473,
+      "Promising": 0.0265588915,
+      "Need attention": 0.0207852194,
+      "About to sleep": 0.0381062356,
+      "Can't lose them": 0.0,
+      "At risk": 0.0057736721,
+      "Hibernating": 0.3163972286,
+      "No purchase in 12 months": 0.4965357968
+    }
+  ],
+  "value_capture_rfm": [
+    {
+      "rfm_segment": "Champions",
+      "customers": 698,
+      "next_spend": 2386485.86,
+      "repeat_rate": 0.9097421203,
+      "learned_mean_spend": 2341.3444038462,
+      "share_customers": 0.1617238184,
+      "share_next_spend": 0.5815497994,
+      "cum_customers": 0.1617238184,
+      "cum_next_spend": 0.5815497994
+    },
+    {
+      "rfm_segment": "Loyal",
+      "customers": 934,
+      "next_spend": 999880.47,
+      "repeat_rate": 0.7847965739,
+      "learned_mean_spend": 1216.1629942693,
+      "share_customers": 0.2164040778,
+      "share_next_spend": 0.2436554503,
+      "cum_customers": 0.3781278962,
+      "cum_next_spend": 0.8252052497
+    },
+    {
+      "rfm_segment": "Can't lose them",
+      "customers": 45,
+      "next_spend": 41115.59,
+      "repeat_rate": 0.6,
+      "learned_mean_spend": 589.7355,
+      "share_customers": 0.0104263207,
+      "share_next_spend": 0.0100192352,
+      "cum_customers": 0.3885542169,
+      "cum_next_spend": 0.8352244849
+    },
+    {
+      "rfm_segment": "Potential loyalists",
+      "customers": 234,
+      "next_spend": 96901.16,
+      "repeat_rate": 0.6025641026,
+      "learned_mean_spend": 318.2681545064,
+      "share_customers": 0.0542168675,
+      "share_next_spend": 0.0236133183,
+      "cum_customers": 0.4427710843,
+      "cum_next_spend": 0.8588378031
+    },
+    {
+      "rfm_segment": "At risk",
+      "customers": 675,
+      "next_spend": 212125.04,
+      "repeat_rate": 0.4592592593,
+      "learned_mean_spend": 268.0400137174,
+      "share_customers": 0.15639481,
+      "share_next_spend": 0.0516916008,
+      "cum_customers": 0.5991658943,
+      "cum_next_spend": 0.910529404
+    },
+    {
+      "rfm_segment": "Need attention",
+      "customers": 177,
+      "next_spend": 59804.8,
+      "repeat_rate": 0.5141242938,
+      "learned_mean_spend": 226.2328093645,
+      "share_customers": 0.0410101946,
+      "share_next_spend": 0.0145735074,
+      "cum_customers": 0.640176089,
+      "cum_next_spend": 0.9251029114
+    },
+    {
+      "rfm_segment": "New customers",
+      "customers": 88,
+      "next_spend": 40792.51,
+      "repeat_rate": 0.5454545455,
+      "learned_mean_spend": 206.4434259259,
+      "share_customers": 0.0203892493,
+      "share_next_spend": 0.0099405056,
+      "cum_customers": 0.6605653383,
+      "cum_next_spend": 0.935043417
+    },
+    {
+      "rfm_segment": "Promising",
+      "customers": 178,
+      "next_spend": 48859.47,
+      "repeat_rate": 0.4494382022,
+      "learned_mean_spend": 157.8693785311,
+      "share_customers": 0.0412418906,
+      "share_next_spend": 0.0119062993,
+      "cum_customers": 0.7018072289,
+      "cum_next_spend": 0.9469497163
+    },
+    {
+      "rfm_segment": "About to sleep",
+      "customers": 271,
+      "next_spend": 46426.8,
+      "repeat_rate": 0.3357933579,
+      "learned_mean_spend": 110.5545210728,
+      "share_customers": 0.06278962,
+      "share_next_spend": 0.0113134952,
+      "cum_customers": 0.7645968489,
+      "cum_next_spend": 0.9582632115
+    },
+    {
+      "rfm_segment": "Hibernating",
+      "customers": 1016,
+      "next_spend": 171273.82,
+      "repeat_rate": 0.3031496063,
+      "learned_mean_spend": 95.9201501155,
+      "share_customers": 0.2354031511,
+      "share_next_spend": 0.0417367885,
+      "cum_customers": 1.0,
+      "cum_next_spend": 1.0
+    }
+  ],
+  "data_quality": [
+    {
+      "code": "DQ01",
+      "severity": "high",
+      "title": "The two yearly files overlap",
+      "finding": "22,523 rows dated 2010-12-01 to 2010-12-09 appear in both files; all 22,523 are exact copies of rows in the first file.",
+      "impact": "Stacking the files double-counts \u00a3377,488 of sales in the busiest pre-Christmas week.",
+      "handling": "Rows from the second file inside the first file's date range are quarantined."
+    },
+    {
+      "code": "DQ02",
+      "severity": "high",
+      "title": "Dates are day-first",
+      "finding": "InvoiceDate is written dd/mm/yyyy hh:mm (01/12/2009 is 1 December).",
+      "impact": "Month-first parsing silently swaps day and month for days 1-12 and fails on the rest.",
+      "handling": "Parsed with an explicit format; the contract fails the run on any unparsed date."
+    },
+    {
+      "code": "DQ03",
+      "severity": "high",
+      "title": "No customer ID on a fifth of rows",
+      "finding": "235,287 rows (22.0%) carry no customer ID, worth \u00a32,566,093 (13.3% of raw line value).",
+      "impact": "These sales cannot be segmented; segment revenue shares describe identified customers only.",
+      "handling": "Quarantined and reported; not imputed."
+    },
+    {
+      "code": "DQ04",
+      "severity": "medium",
+      "title": "Non-product lines mixed with sales",
+      "finding": "3,671 lines are postage, fees, manual adjustments, bad-debt write-offs, vouchers or test products (codes such as POST, DOT, M, AMAZONFEE, B).",
+      "impact": "They distort spend, especially single large adjustments.",
+      "handling": "Listed explicitly in config.py and quarantined."
+    },
+    {
+      "code": "DQ05",
+      "severity": "medium",
+      "title": "Exact duplicate lines",
+      "finding": "11,665 rows repeat an earlier row in every field.",
+      "impact": "Keeping them adds \u00a353,302 of probably double-keyed sales.",
+      "handling": "First copy kept, the rest quarantined. This is a judgement: a customer could genuinely order the same line twice on one invoice."
+    },
+    {
+      "code": "DQ06",
+      "severity": "low",
+      "title": "Returns recorded as cancellation invoices",
+      "finding": "Cancellations ('C' invoices) from known customers equal 4.2% of purchase value.",
+      "impact": "Ignoring them overstates customer value; dropping them as noise loses a behaviour signal.",
+      "handling": "Kept as returns and netted off each customer's spend in the same window."
+    },
+    {
+      "code": "DQ07",
+      "severity": "low",
+      "title": "Inconsistent ID format and file encoding",
+      "finding": "Customer IDs are '13085.0' in one file and '13085' in the other; the second file starts with a byte-order mark.",
+      "impact": "A naive join treats the same customer as two, and the first column name is corrupted.",
+      "handling": "IDs normalised to 5-digit strings and checked by the contract; files read as utf-8-sig."
+    },
+    {
+      "code": "DQ08",
+      "severity": "low",
+      "title": "Zero or negative net spend",
+      "finding": "15 customers at the fit snapshot and 8 at the test snapshot returned as much as they bought.",
+      "impact": "They cannot be scored on spend.",
+      "handling": "Excluded from that snapshot's segmentation and counted here."
+    },
+    {
+      "code": "DQ09",
+      "severity": "pass",
+      "title": "Every raw row is accounted for",
+      "finding": "1,067,371 rows and \u00a319,287,250.57 of line value reconcile to purchases + returns + quarantine with a difference of \u00a30.00.",
+      "impact": "None.",
+      "handling": "Asserted in the pipeline and in the tests."
+    }
+  ],
+  "workbook": {
+    "formulas": 134,
+    "errors": 0
+  }
+}
