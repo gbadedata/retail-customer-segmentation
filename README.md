@@ -28,15 +28,15 @@ This project segments the customers of a UK online retailer and then tests the s
 
 ## Results at a glance
 
-The segments are built on the **December 2010** snapshot and applied unchanged at **June 2011** to 4,316 customers. They are then scored on purchases from **June to November 2011**.
+The segments are built on the **December 2010** snapshot and applied unchanged at **June 2011** to 4,314 customers. They are then scored on purchases from **June to November 2011**.
 
 | Question | Answer | Evidence |
 |---|---|---|
-| How concentrated is spend? | Top 10% of customers = **59.1%** of 12-month spend; top 20% = 73.0% | [Spend concentration](figures/07_spend_concentration.png) |
+| How concentrated is spend? | Top 10% of customers = **59.0%** of 12-month spend; top 20% = 73.0% | [Spend concentration](figures/07_spend_concentration.png) |
 | Who carries the business? | Champions and Loyal: **37.8%** of customers, **82.5%** of next-period spend | Champions alone: 16.2% of customers, 58.2% of spend, 91% reordered |
 | How many segments hold up? | **4**, chosen by a rule fixed before seeing results | Bootstrap stability (ARI) 0.93; 7 or more segments were unstable |
-| Do segments predict who buys again? | Yes. The simple **RFM total score is as good as a per-customer BG/NBD model** | ROC AUC 0.780 (0.767 to 0.792) vs 0.777 (0.764 to 0.790) |
-| Where are customers lost? | At the **second order** | 64% of December's "New customers" had slipped to Hibernating by June |
+| Do segments predict who buys again? | Yes. The simple **RFM total score is as good as a per-customer BG/NBD model** | ROC AUC 0.780 (0.767 to 0.793) vs 0.777 (0.762 to 0.791) |
+| Where are customers lost? | At the **second order** | 63% of December's "New customers" had slipped to Hibernating by June |
 | Can the raw data be trusted as-is? | No. **22,523 rows** (£377,488) are double-counted across the source files | All verified as exact copies; every line reconciles to £0.00 |
 
 ## Key findings
@@ -49,11 +49,11 @@ The segments are built on the **December 2010** snapshot and applied unchanged a
 
 **3. K-means picked four segments, and they are stable.** Candidates from 2 to 8 segments were compared on separation (silhouette, Davies-Bouldin, Calinski-Harabasz) and on bootstrap stability. Two segments separate best, but they are too coarse to act on. The rule (at least 3 segments, stability of at least 0.80, then best silhouette) selects 4. The top cluster, "recent, frequent, high spend", is 13.2% of customers and produced 62.2% of next-period spend, with 96% reordering. ([choosing k](figures/02_choosing_k.png), [profiles](figures/03_cluster_profiles.png))
 
-**4. A simple score is as good as a sophisticated model.** Each segmentation's repeat rates and spend were learned on December 2010 outcomes, applied at June 2011, and scored against what customers actually did. The RFM total score (ROC AUC 0.780 for who reorders, Spearman 0.590 for spend) matched a BG/NBD model that scores every customer individually (0.777 and 0.599), with overlapping intervals on both. The ten named RFM segments do well on who reorders (AUC 0.758) but are the weakest on spend (Spearman 0.522), because the standard grid ignores spend entirely.
+**4. A simple score is as good as a sophisticated model.** Each segmentation's repeat rates and spend were learned on December 2010 outcomes, applied at June 2011, and scored against what customers actually did. The RFM total score (ROC AUC 0.780 for who reorders, Spearman 0.590 for spend) matched a BG/NBD model that scores every customer individually (0.777 and 0.598), with overlapping intervals on both. The ten named RFM segments do well on who reorders (AUC 0.758) but are the weakest on spend (Spearman 0.522), because the standard grid ignores spend entirely.
 
 <p align="center"><img src="figures/04_out_of_time_validation.png" width="760" alt="Out-of-time validation of six segmentation schemes with bootstrap intervals"></p>
 
-**5. The second order is where customers are lost.** Six months after December 2010, 64% of "New customers" and 71% of "Promising" customers had become Hibernating. Half of the December Hibernating customers had made no purchase in 12 months. Champions mostly stayed valuable: 43% were still Champions, 40% had moved to Loyal and 14% to At risk.
+**5. The second order is where customers are lost.** Six months after December 2010, 63% of "New customers" and 71% of "Promising" customers had become Hibernating. Half of the December Hibernating customers had made no purchase in 12 months. Champions mostly stayed valuable: 43% were still Champions, 40% had moved to Loyal and 14% to At risk.
 
 <p align="center"><img src="figures/06_segment_migration.png" width="760" alt="Segment migration matrix, December 2010 to June 2011"></p>
 
@@ -134,6 +134,7 @@ The full tables are in [reports/RESULTS.md](reports/RESULTS.md), which is genera
 | Trusting a hand-written statistical model | Silent maths errors | BG/NBD reproduces the published CDNOW estimates in a test |
 | Losing revenue silently during cleaning | Totals that don't add up | Reconciliation asserted to the penny |
 | Spreadsheet formulas that are silently wrong | Wrong numbers in front of a manager | Workbook recalculated and compared with pandas under two filters |
+| Comparing money as raw floats | A customer who returned everything counts as a buyer | Net spend compared in whole pennies |
 
 ## Reproduce it
 
@@ -143,7 +144,7 @@ cd retail-customer-segmentation
 make install   # pip install -e ".[dev]"
 make data      # about 90 MB from a pinned mirror commit, SHA-256 verified
 make run       # about 20 seconds: writes reports/, figures/, outputs/
-make test      # 17 tests on synthetic data and the CDNOW fixture, no network needed
+make test      # 18 tests on synthetic data and the CDNOW fixture, no network needed
 ```
 
 This needs Python 3.11 or later. LibreOffice (`soffice`) is optional: without it, the workbook is written but not recalculated. Seeds are fixed, and in testing a fresh clone reproduced the committed `reports/results.json` exactly.
@@ -186,7 +187,7 @@ scripts/           README preview renderer
 
 - **Contract:** day-first dates are parsed and month-first dates rejected, and the ID format is normalised. Missing columns stop the run, and files with a byte-order mark load correctly.
 - **Cleaning:** every row lands in exactly one bucket, the first rule wins, value reconciles, and overlap copies are verified.
-- **Features:** snapshot boundaries (a purchase on the snapshot day counts as an outcome, not a feature), returns are netted, non-positive customers are excluded, and BG/NBD inputs are consistent.
+- **Features:** snapshot boundaries (a purchase on the snapshot day counts as an outcome, not a feature), returns are netted, non-positive customers are excluded (including a fully returned order whose float sum is a hair above zero), and BG/NBD inputs are consistent.
 - **RFM:** tied customers get the same score, and the grid covers all 25 recency-frequency codes exactly once.
 - **K-means:** clear three-group structure is recovered with stability above 0.95, and labels are ordered by spend.
 - **BG/NBD:** the published CDNOW parameters, log-likelihood and worked example are reproduced.

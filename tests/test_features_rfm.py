@@ -40,6 +40,19 @@ def test_snapshot_respects_windows_and_nets_returns():
     assert a["bg_x"] == 2 and a["bg_t_x"] <= a["bg_T"]
 
 
+def test_a_fully_returned_order_is_excluded_despite_float_residue():
+    # 0.1 + 0.2 - 0.3 is 5.6e-17 in floating point. Customers 13762 and 16252 in the real
+    # data net to 5.7e-14 the same way; both returned their whole order.
+    t = pd.Timestamp
+    purchases = _tx([("1", t("2010-06-01"), 0.1, "A"), ("1", t("2010-06-01"), 0.2, "A"),
+                     ("2", t("2010-07-01"), 10.0, "B")])
+    returns = _tx([("C1", t("2010-06-02"), -0.3, "A")])
+    assert purchases.loc[purchases["Customer ID"] == "A", "value"].sum() + returns["value"].sum() > 0
+    f = features.snapshot(purchases, returns, "snapshot_fit", S)
+    assert set(f.index) == {"B"}
+    assert f.attrs["excluded_non_positive"] == 1
+
+
 def test_scores_give_ties_the_same_score_and_reward_recency():
     df = pd.DataFrame({"recency_days": [1, 5, 50, 200, 300, 300], "frequency": [1, 1, 1, 1, 2, 9],
                        "monetary": [10, 20, 30, 40, 50, 60.0]})
