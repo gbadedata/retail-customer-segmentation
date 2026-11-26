@@ -1,0 +1,171 @@
+{
+  "rows": 1067371,
+  "spark_version": "4.3.0",
+  "row_buckets": {
+    "same_rows": true,
+    "mismatches": 0
+  },
+  "cleaning_log": [
+    {
+      "bucket": "purchase",
+      "rows_pandas": 776579,
+      "rows_spark": 776579,
+      "value_pandas": 17068582.72,
+      "value_spark": 17068582.71999828
+    },
+    {
+      "bucket": "return",
+      "rows_pandas": 17586,
+      "rows_spark": 17586,
+      "value_pandas": -709953.43,
+      "value_spark": -709953.4300000243
+    },
+    {
+      "bucket": "overlap_duplicate",
+      "rows_pandas": 22523,
+      "rows_spark": 22523,
+      "value_pandas": 377488.45,
+      "value_spark": 377488.45000000496
+    },
+    {
+      "bucket": "missing_customer",
+      "rows_pandas": 235287,
+      "rows_spark": 235287,
+      "value_pandas": 2566093.08,
+      "value_spark": 2566093.079997817
+    },
+    {
+      "bucket": "non_product",
+      "rows_pandas": 3671,
+      "rows_spark": 3671,
+      "value_pandas": -68262.29199999999,
+      "value_spark": -68262.2920000002
+    },
+    {
+      "bucket": "bad_price",
+      "rows_pandas": 60,
+      "rows_spark": 60,
+      "value_pandas": 0.0,
+      "value_spark": 0.0
+    },
+    {
+      "bucket": "bad_quantity",
+      "rows_pandas": 0,
+      "rows_spark": 0,
+      "value_pandas": 0.0,
+      "value_spark": 0.0
+    },
+    {
+      "bucket": "exact_duplicate",
+      "rows_pandas": 11665,
+      "rows_spark": 11665,
+      "value_pandas": 53302.04,
+      "value_spark": 53302.03999999878
+    }
+  ],
+  "reconciliation": {
+    "pandas_balanced": true,
+    "spark_balanced": true,
+    "spark_difference": -2.179667353630066e-05
+  },
+  "overlap_check": {
+    "pandas": {
+      "rows": 22523,
+      "matched": 22523,
+      "unmatched": 0,
+      "from": "2010-12-01",
+      "to": "2010-12-09"
+    },
+    "spark": {
+      "rows": 22523,
+      "matched": 22523,
+      "unmatched": 0,
+      "from": "2010-12-01",
+      "to": "2010-12-09"
+    },
+    "same": true
+  },
+  "snapshots": {
+    "snapshot_fit": {
+      "customers_pandas": 4224,
+      "customers_spark": 4224,
+      "same_customers": true,
+      "excluded_pandas": 15,
+      "excluded_spark": 15,
+      "int_mismatches": {
+        "frequency": 0,
+        "products": 0,
+        "recency_days": 0,
+        "tenure_days": 0,
+        "bg_x": 0,
+        "next_orders": 0,
+        "r_score": 0,
+        "f_score": 0,
+        "m_score": 0,
+        "rfm_sum": 0
+      },
+      "float_max_abs_diff": {
+        "gross_spend": 1.0477378964424133e-09,
+        "returns_value": 1.1368683772161603e-12,
+        "monetary": 1.0477378964424133e-09,
+        "avg_order_value": 8.640199666842818e-12,
+        "return_rate": 4.510281037539698e-16,
+        "bg_t_x": 0.0,
+        "bg_T": 0.0,
+        "next_gross": 1.4551915228366852e-11,
+        "next_returns": 2.2737367544323206e-13,
+        "next_spend": 1.4551915228366852e-11
+      },
+      "country_mismatches": 0,
+      "repeat_mismatches": 0,
+      "segment_mismatches": 0
+    },
+    "snapshot_test": {
+      "customers_pandas": 4314,
+      "customers_spark": 4314,
+      "same_customers": true,
+      "excluded_pandas": 10,
+      "excluded_spark": 10,
+      "int_mismatches": {
+        "frequency": 0,
+        "products": 0,
+        "recency_days": 0,
+        "tenure_days": 0,
+        "bg_x": 0,
+        "next_orders": 0,
+        "r_score": 0,
+        "f_score": 0,
+        "m_score": 0,
+        "rfm_sum": 0
+      },
+      "float_max_abs_diff": {
+        "gross_spend": 8.731149137020111e-10,
+        "returns_value": 1.8189894035458565e-12,
+        "monetary": 8.731149137020111e-10,
+        "avg_order_value": 8.640199666842818e-12,
+        "return_rate": 4.440892098500626e-16,
+        "bg_t_x": 0.0,
+        "bg_T": 0.0,
+        "next_gross": 4.3655745685100555e-11,
+        "next_returns": 9.094947017729282e-12,
+        "next_spend": 4.3655745685100555e-11
+      },
+      "country_mismatches": 0,
+      "repeat_mismatches": 0,
+      "segment_mismatches": 0
+    }
+  },
+  "headline_from_spark": {
+    "customers": 4314,
+    "champions_loyal_share_customers": 0.37830319888734354,
+    "champions_loyal_share_next_spend": 0.8252052496715181,
+    "champions_share_customers": 0.1617987946221604,
+    "champions_share_next_spend": 0.5815497994095776,
+    "champions_reorder_rate": 0.9097421203438395
+  },
+  "seconds": {
+    "pandas": 4.4,
+    "spark_local": 39.9
+  },
+  "failures": []
+}

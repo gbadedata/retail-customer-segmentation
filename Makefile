@@ -1,7 +1,10 @@
-.PHONY: install data run test lint all clean
+.PHONY: install install-spark data run test parity lint all clean
 
 install:
 	pip install -e ".[dev]"
+
+install-spark:
+	pip install -e ".[dev,spark]"
 
 data:
 	python -m segments.download
@@ -12,8 +15,11 @@ run:
 test:
 	pytest -q
 
+parity:
+	python scripts/spark_parity.py --check
+
 lint:
-	ruff check src tests
+	ruff check src tests scripts
 
 all: data run test
 
