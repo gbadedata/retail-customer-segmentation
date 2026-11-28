@@ -22,3 +22,36 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: ruff check src tests scripts
       - run: pytest -q
+
+  spark:
+    # The PySpark engine must agree with pandas on synthetic data and on all 1,067,371 real rows.
+    runs-on: ubuntu-latest
+    env:
+      REQUIRE_SPARK: "1"
+      TZ: UTC
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - run: pip install -e ".[dev,spark]"
+      - name: Parity tests on synthetic data
+        run: pytest -q tests/test_spark_parity.py
+      - uses: actions/cache@v4
+        with:
+          path: data/raw
+          key: online-retail-ii-${{ hashFiles('src/segments/download.py') }}
+      - name: Download the pinned, checksummed data
+        run: python -m segments.download
+      - name: Full-data parity, pandas vs Spark
+        run: python scripts/spark_parity.py --check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: spark-parity
+          path: reports/SPARK_PARITY.md

@@ -54,9 +54,12 @@ def snapshot(purchases: pd.DataFrame, returns: pd.DataFrame, which: str, s: Sett
     g["next_spend"] = g["next_gross"] + g["next_returns"]
     g["repeat"] = g["next_orders"] > 0
 
+    # Net spend is compared in whole pennies: a customer who returned an entire order nets to a
+    # float residue such as 5.7e-14, which is zero, not a sale.
+    positive = g["monetary"].round(2) > 0
     g.attrs.update({"snapshot": f"{snap:%Y-%m-%d}", "lookback_start": f"{start:%Y-%m-%d}",
-                    "horizon_end": f"{end:%Y-%m-%d}", "excluded_non_positive": int((g["monetary"] <= 0).sum())})
-    out = g[g["monetary"] > 0].copy()
+                    "horizon_end": f"{end:%Y-%m-%d}", "excluded_non_positive": int((~positive).sum())})
+    out = g[positive].copy()
     out.attrs = g.attrs
     return out
 

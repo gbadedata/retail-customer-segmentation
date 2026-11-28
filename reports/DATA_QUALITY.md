@@ -46,7 +46,7 @@ What was found in the raw files, what it would have done to the analysis, and ho
 
 ## DQ08 [low] Zero or negative net spend
 
-- **Finding:** 15 customers at the fit snapshot and 8 at the test snapshot returned as much as they bought.
+- **Finding:** 15 customers at the fit snapshot and 10 at the test snapshot returned as much as they bought.
 - **Impact if ignored:** They cannot be scored on spend.
 - **Handling:** Excluded from that snapshot's segmentation and counted here.
 

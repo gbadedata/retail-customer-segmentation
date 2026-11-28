@@ -106,15 +106,15 @@
       "snapshot": "2011-06-01",
       "lookback_start": "2010-06-01",
       "horizon_end": "2011-12-01",
-      "excluded_non_positive": 8,
-      "customers": 4316,
-      "repeat_rate": 0.5708989805375347,
+      "excluded_non_positive": 10,
+      "customers": 4314,
+      "repeat_rate": 0.5711636532220676,
       "pareto": {
-        "top_10pct": 0.5906990899117399,
+        "top_10pct": 0.5902633590270895,
         "top_20pct": 0.7299110503622465,
-        "top_50pct": 0.9150988406934091
+        "top_50pct": 0.9150173308891261
       },
-      "uk_share": 0.9154309545875811
+      "uk_share": 0.9153917477978674
     }
   },
   "rfm": {
@@ -128,7 +128,7 @@
         "median_orders": 7.0,
         "repeat_rate_next6m": 0.9097421203,
         "next_spend": 2386485.86,
-        "share_customers": 0.1617238184,
+        "share_customers": 0.1617987946,
         "share_spend_12m": 0.5251242009,
         "share_next_spend": 0.5815497994
       },
@@ -141,7 +141,7 @@
         "median_orders": 5.0,
         "repeat_rate_next6m": 0.7847965739,
         "next_spend": 999880.47,
-        "share_customers": 0.2164040778,
+        "share_customers": 0.2165044043,
         "share_spend_12m": 0.2769124036,
         "share_next_spend": 0.2436554503
       },
@@ -154,7 +154,7 @@
         "median_orders": 2.0,
         "repeat_rate_next6m": 0.6025641026,
         "next_spend": 96901.16,
-        "share_customers": 0.0542168675,
+        "share_customers": 0.0542420028,
         "share_spend_12m": 0.019785363,
         "share_next_spend": 0.0236133183
       },
@@ -167,20 +167,20 @@
         "median_orders": 1.0,
         "repeat_rate_next6m": 0.5454545455,
         "next_spend": 40792.51,
-        "share_customers": 0.0203892493,
+        "share_customers": 0.0203987019,
         "share_spend_12m": 0.0052576778,
         "share_next_spend": 0.0099405056
       },
       {
         "rfm_segment": "Promising",
-        "customers": 178,
+        "customers": 177,
         "spend_12m": 54491.24,
-        "median_spend_12m": 241.5,
+        "median_spend_12m": 243.0,
         "median_recency_days": 50.0,
         "median_orders": 1.0,
-        "repeat_rate_next6m": 0.4494382022,
+        "repeat_rate_next6m": 0.4519774011,
         "next_spend": 48859.47,
-        "share_customers": 0.0412418906,
+        "share_customers": 0.0410292072,
         "share_spend_12m": 0.0070453029,
         "share_next_spend": 0.0119062993
       },
@@ -193,7 +193,7 @@
         "median_orders": 2.0,
         "repeat_rate_next6m": 0.5141242938,
         "next_spend": 59804.8,
-        "share_customers": 0.0410101946,
+        "share_customers": 0.0410292072,
         "share_spend_12m": 0.0158028159,
         "share_next_spend": 0.0145735074
       },
@@ -206,7 +206,7 @@
         "median_orders": 1.0,
         "repeat_rate_next6m": 0.3357933579,
         "next_spend": 46426.8,
-        "share_customers": 0.06278962,
+        "share_customers": 0.0628187297,
         "share_spend_12m": 0.0114719099,
         "share_next_spend": 0.0113134952
       },
@@ -219,7 +219,7 @@
         "median_orders": 6.0,
         "repeat_rate_next6m": 0.6,
         "next_spend": 41115.59,
-        "share_customers": 0.0104263207,
+        "share_customers": 0.0104311544,
         "share_spend_12m": 0.0195030789,
         "share_next_spend": 0.0100192352
       },
@@ -232,20 +232,20 @@
         "median_orders": 2.0,
         "repeat_rate_next6m": 0.4592592593,
         "next_spend": 212125.04,
-        "share_customers": 0.15639481,
+        "share_customers": 0.1564673157,
         "share_spend_12m": 0.0731414226,
         "share_next_spend": 0.0516916008
       },
       {
         "rfm_segment": "Hibernating",
-        "customers": 1016,
+        "customers": 1015,
         "spend_12m": 355441.05,
-        "median_spend_12m": 245.225,
-        "median_recency_days": 237.5,
+        "median_spend_12m": 245.3,
+        "median_recency_days": 238.0,
         "median_orders": 1.0,
-        "repeat_rate_next6m": 0.3031496063,
+        "repeat_rate_next6m": 0.3034482759,
         "next_spend": 171273.82,
-        "share_customers": 0.2354031511,
+        "share_customers": 0.2352804822,
         "share_spend_12m": 0.0459558245,
         "share_next_spend": 0.0417367885
       }
@@ -363,7 +363,7 @@
         "median_orders": 11.0,
         "repeat_rate_next6m": 0.9595782074,
         "next_spend": 2554301.17,
-        "share_customers": 0.1318350324,
+        "share_customers": 0.1318961521,
         "share_spend_12m": 0.5935455848,
         "share_next_spend": 0.6224438024
       },
@@ -377,7 +377,7 @@
         "median_orders": 4.0,
         "repeat_rate_next6m": 0.6936076414,
         "next_spend": 1014580.17,
-        "share_customers": 0.3153382762,
+        "share_customers": 0.3154844692,
         "share_spend_12m": 0.287425538,
         "share_next_spend": 0.2472375405
       },
@@ -391,21 +391,21 @@
         "median_orders": 2.0,
         "repeat_rate_next6m": 0.6809045226,
         "next_spend": 195523.65,
-        "share_customers": 0.0922150139,
+        "share_customers": 0.0922577654,
         "share_spend_12m": 0.0339952979,
         "share_next_spend": 0.0476460981
       },
       {
         "cluster": 4,
         "name": "lapsed, infrequent, low spend",
-        "customers": 1988,
+        "customers": 1986,
         "spend_12m": 657684.31,
-        "median_spend_12m": 289.775,
+        "median_spend_12m": 290.085,
         "median_recency_days": 203.0,
         "median_orders": 1.0,
-        "repeat_rate_next6m": 0.3536217304,
+        "repeat_rate_next6m": 0.3539778449,
         "next_spend": 339260.53,
-        "share_customers": 0.4606116775,
+        "share_customers": 0.4603616134,
         "share_spend_12m": 0.0850335793,
         "share_next_spend": 0.082672559
       }
@@ -417,67 +417,67 @@
         "scheme": "rfm_segment",
         "label": "RFM named segments (10)",
         "segments": 10.0,
-        "repeat_auc": 0.7584730924,
-        "spend_spearman": 0.5224268516,
-        "repeat_auc_low": 0.7443430729,
-        "repeat_auc_high": 0.7725121642,
-        "spend_spearman_low": 0.4972835275,
-        "spend_spearman_high": 0.5437960379
+        "repeat_auc": 0.7583420718,
+        "spend_spearman": 0.5222654809,
+        "repeat_auc_low": 0.7438185326,
+        "repeat_auc_high": 0.7727946324,
+        "spend_spearman_low": 0.4998257002,
+        "spend_spearman_high": 0.5462121939
       },
       {
         "scheme": "cluster",
         "label": "K-means segments (4)",
         "segments": 4.0,
-        "repeat_auc": 0.7345047299,
-        "spend_spearman": 0.5536202786,
-        "repeat_auc_low": 0.7209386122,
-        "repeat_auc_high": 0.7470757239,
-        "spend_spearman_low": 0.5282023933,
-        "spend_spearman_high": 0.5751710176
+        "repeat_auc": 0.7343719287,
+        "spend_spearman": 0.5534580053,
+        "repeat_auc_low": 0.7205212917,
+        "repeat_auc_high": 0.747623329,
+        "spend_spearman_low": 0.5303227619,
+        "spend_spearman_high": 0.5773795068
       },
       {
         "scheme": "rfm_sum",
         "label": "RFM score total (3-15)",
         "segments": 13.0,
-        "repeat_auc": 0.7800272082,
-        "spend_spearman": 0.5897605216,
-        "repeat_auc_low": 0.7666673421,
-        "repeat_auc_high": 0.791971955,
-        "spend_spearman_low": 0.5670350981,
-        "spend_spearman_high": 0.6090296076
+        "repeat_auc": 0.7798986486,
+        "spend_spearman": 0.5896639367,
+        "repeat_auc_low": 0.7665037437,
+        "repeat_auc_high": 0.7927528235,
+        "spend_spearman_low": 0.5687521268,
+        "spend_spearman_high": 0.6109112384
       },
       {
         "scheme": "m_decile",
         "label": "Spend deciles only (10)",
         "segments": 10.0,
-        "repeat_auc": 0.7510824337,
-        "spend_spearman": 0.583862766,
-        "repeat_auc_low": 0.7372526446,
-        "repeat_auc_high": 0.7637154951,
-        "spend_spearman_low": 0.5593959099,
-        "spend_spearman_high": 0.6053439604
+        "repeat_auc": 0.7509540628,
+        "spend_spearman": 0.5838658255,
+        "repeat_auc_low": 0.7370506052,
+        "repeat_auc_high": 0.7649376448,
+        "spend_spearman_low": 0.5610486223,
+        "spend_spearman_high": 0.6065245045
       },
       {
         "scheme": "r_only",
         "label": "Recency score only (5)",
         "segments": 5.0,
-        "repeat_auc": 0.7220324728,
-        "spend_spearman": 0.4482282388,
-        "repeat_auc_low": 0.7077334933,
-        "repeat_auc_high": 0.7363551202,
-        "spend_spearman_low": 0.4213199013,
-        "spend_spearman_high": 0.4732922974
+        "repeat_auc": 0.7221429668,
+        "spend_spearman": 0.448399772,
+        "repeat_auc_low": 0.7063427338,
+        "repeat_auc_high": 0.7361277121,
+        "spend_spearman_low": 0.4224170288,
+        "spend_spearman_high": 0.4717020842
       },
       {
         "scheme": "bgnbd",
         "label": "BG/NBD per customer (no segments)",
         "segments": null,
-        "repeat_auc": 0.7773799078,
-        "spend_spearman": 0.5985706006,
-        "repeat_auc_low": 0.7639557567,
-        "repeat_auc_high": 0.7901279545,
-        "spend_spearman_low": 0.5771117888,
-        "spend_spearman_high": 0.6214644822
+        "repeat_auc": 0.7774280449,
+        "spend_spearman": 0.5983587504,
+        "repeat_auc_low": 0.7621325727,
+        "repeat_auc_high": 0.790530245,
+        "spend_spearman_low": 0.5760572028,
+        "spend_spearman_high": 0.6198200209
       }
     ],
     "rfm_calibration": [
@@ -522,9 +522,9 @@
         "customers_fit": 177,
         "repeat_rate_fit": 0.2881355932,
         "mean_next_spend_fit": 157.8693785311,
-        "customers_test": 178,
-        "repeat_rate_test": 0.4494382022,
-        "mean_next_spend_test": 274.4914044944
+        "customers_test": 177,
+        "repeat_rate_test": 0.4519774011,
+        "mean_next_spend_test": 276.0422033898
       },
       {
         "rfm_segment": "Need attention",
@@ -567,18 +567,18 @@
         "customers_fit": 866,
         "repeat_rate_fit": 0.1963048499,
         "mean_next_spend_fit": 95.9201501155,
-        "customers_test": 1016,
-        "repeat_rate_test": 0.3031496063,
-        "mean_next_spend_test": 168.5765944882
+        "customers_test": 1015,
+        "repeat_rate_test": 0.3034482759,
+        "mean_next_spend_test": 168.742679803
       }
     ]
   },
   "bgnbd": {
-    "r": 0.9518818819772269,
-    "alpha": 12.129396268191076,
-    "a": 0.1696211277678142,
-    "b": 8.170275424966894,
-    "log_likelihood": -55291.00950800764,
+    "r": 0.9519204569011792,
+    "alpha": 12.125236502187578,
+    "a": 0.16939203524818586,
+    "b": 8.131936417540507,
+    "log_likelihood": -55273.31391230476,
     "horizon_weeks": 26.142857142857142
   },
   "migration": [
@@ -635,8 +635,8 @@
       "About to sleep": 0.0,
       "Can't lose them": 0.0,
       "At risk": 0.0555555556,
-      "Hibernating": 0.6388888889,
-      "No purchase in 12 months": 0.0
+      "Hibernating": 0.6296296296,
+      "No purchase in 12 months": 0.0092592593
     },
     {
       "rfm_segment": "Promising",
@@ -700,13 +700,13 @@
       "Loyal": 0.1399176955,
       "Potential loyalists": 0.0507544582,
       "New customers": 0.0041152263,
-      "Promising": 0.0164609053,
+      "Promising": 0.0150891632,
       "Need attention": 0.0480109739,
       "About to sleep": 0.037037037,
       "Can't lose them": 0.0,
       "At risk": 0.19478738,
       "Hibernating": 0.2263374486,
-      "No purchase in 12 months": 0.1920438957
+      "No purchase in 12 months": 0.1934156379
     },
     {
       "rfm_segment": "Hibernating",
@@ -730,9 +730,9 @@
       "next_spend": 2386485.86,
       "repeat_rate": 0.9097421203,
       "learned_mean_spend": 2341.3444038462,
-      "share_customers": 0.1617238184,
+      "share_customers": 0.1617987946,
       "share_next_spend": 0.5815497994,
-      "cum_customers": 0.1617238184,
+      "cum_customers": 0.1617987946,
       "cum_next_spend": 0.5815497994
     },
     {
@@ -741,9 +741,9 @@
       "next_spend": 999880.47,
       "repeat_rate": 0.7847965739,
       "learned_mean_spend": 1216.1629942693,
-      "share_customers": 0.2164040778,
+      "share_customers": 0.2165044043,
       "share_next_spend": 0.2436554503,
-      "cum_customers": 0.3781278962,
+      "cum_customers": 0.3783031989,
       "cum_next_spend": 0.8252052497
     },
     {
@@ -752,9 +752,9 @@
       "next_spend": 41115.59,
       "repeat_rate": 0.6,
       "learned_mean_spend": 589.7355,
-      "share_customers": 0.0104263207,
+      "share_customers": 0.0104311544,
       "share_next_spend": 0.0100192352,
-      "cum_customers": 0.3885542169,
+      "cum_customers": 0.3887343533,
       "cum_next_spend": 0.8352244849
     },
     {
@@ -763,9 +763,9 @@
       "next_spend": 96901.16,
       "repeat_rate": 0.6025641026,
       "learned_mean_spend": 318.2681545064,
-      "share_customers": 0.0542168675,
+      "share_customers": 0.0542420028,
       "share_next_spend": 0.0236133183,
-      "cum_customers": 0.4427710843,
+      "cum_customers": 0.4429763561,
       "cum_next_spend": 0.8588378031
     },
     {
@@ -774,9 +774,9 @@
       "next_spend": 212125.04,
       "repeat_rate": 0.4592592593,
       "learned_mean_spend": 268.0400137174,
-      "share_customers": 0.15639481,
+      "share_customers": 0.1564673157,
       "share_next_spend": 0.0516916008,
-      "cum_customers": 0.5991658943,
+      "cum_customers": 0.5994436718,
       "cum_next_spend": 0.910529404
     },
     {
@@ -785,9 +785,9 @@
       "next_spend": 59804.8,
       "repeat_rate": 0.5141242938,
       "learned_mean_spend": 226.2328093645,
-      "share_customers": 0.0410101946,
+      "share_customers": 0.0410292072,
       "share_next_spend": 0.0145735074,
-      "cum_customers": 0.640176089,
+      "cum_customers": 0.640472879,
       "cum_next_spend": 0.9251029114
     },
     {
@@ -796,20 +796,20 @@
       "next_spend": 40792.51,
       "repeat_rate": 0.5454545455,
       "learned_mean_spend": 206.4434259259,
-      "share_customers": 0.0203892493,
+      "share_customers": 0.0203987019,
       "share_next_spend": 0.0099405056,
-      "cum_customers": 0.6605653383,
+      "cum_customers": 0.6608715809,
       "cum_next_spend": 0.935043417
     },
     {
       "rfm_segment": "Promising",
-      "customers": 178,
+      "customers": 177,
       "next_spend": 48859.47,
-      "repeat_rate": 0.4494382022,
+      "repeat_rate": 0.4519774011,
       "learned_mean_spend": 157.8693785311,
-      "share_customers": 0.0412418906,
+      "share_customers": 0.0410292072,
       "share_next_spend": 0.0119062993,
-      "cum_customers": 0.7018072289,
+      "cum_customers": 0.7019007881,
       "cum_next_spend": 0.9469497163
     },
     {
@@ -818,18 +818,18 @@
       "next_spend": 46426.8,
       "repeat_rate": 0.3357933579,
       "learned_mean_spend": 110.5545210728,
-      "share_customers": 0.06278962,
+      "share_customers": 0.0628187297,
       "share_next_spend": 0.0113134952,
-      "cum_customers": 0.7645968489,
+      "cum_customers": 0.7647195178,
       "cum_next_spend": 0.9582632115
     },
     {
       "rfm_segment": "Hibernating",
-      "customers": 1016,
+      "customers": 1015,
       "next_spend": 171273.82,
-      "repeat_rate": 0.3031496063,
+      "repeat_rate": 0.3034482759,
       "learned_mean_spend": 95.9201501155,
-      "share_customers": 0.2354031511,
+      "share_customers": 0.2352804822,
       "share_next_spend": 0.0417367885,
       "cum_customers": 1.0,
       "cum_next_spend": 1.0
@@ -896,7 +896,7 @@
       "code": "DQ08",
       "severity": "low",
       "title": "Zero or negative net spend",
-      "finding": "15 customers at the fit snapshot and 8 at the test snapshot returned as much as they bought.",
+      "finding": "15 customers at the fit snapshot and 10 at the test snapshot returned as much as they bought.",
       "impact": "They cannot be scored on spend.",
       "handling": "Excluded from that snapshot's segmentation and counted here."
     },

@@ -21,6 +21,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff==0.16.9"]
+spark = ["pyspark>=4.0"]  # also needs Java 17 or 21
 
 [tool.setuptools.packages.find]
 where = ["src"]

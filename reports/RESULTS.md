@@ -21,23 +21,23 @@ Overlap check: 22,523 rows dated 2010-12-01 to 2010-12-09 appear in both files; 
 ## 2. Snapshots
 
 - Fit snapshot 2010-12-01: 4,224 customers bought between 2009-12-01 and the snapshot; 48.4% ordered again by 2011-06-01. 15 customers with zero or negative net spend excluded.
-- Test snapshot 2011-06-01: 4,316 customers; 57.1% ordered again by 2011-12-01. 8 excluded.
-- Spend concentration at the test snapshot: top 10% of customers = 59.1% of 12-month net spend; top 20% = 73.0%.
+- Test snapshot 2011-06-01: 4,314 customers; 57.1% ordered again by 2011-12-01. 10 excluded.
+- Spend concentration at the test snapshot: top 10% of customers = 59.0% of 12-month net spend; top 20% = 73.0%.
 
 ## 3. RFM segments at the test snapshot
 
 | rfm segment | customers | spend 12m | median spend 12m | median recency days | median orders | repeat rate next6m | next spend | share customers | share spend 12m | share next spend |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | Champions | 698 | 4,061,524 | 2,419 | 12 | 7 | 91.0% | 2,386,486 | 16.2% | 52.5% | 58.2% |
-| Loyal | 934 | 2,141,753 | 1,478 | 64 | 5 | 78.5% | 999,880 | 21.6% | 27.7% | 24.4% |
+| Loyal | 934 | 2,141,753 | 1,478 | 64 | 5 | 78.5% | 999,880 | 21.7% | 27.7% | 24.4% |
 | Potential loyalists | 234 | 153,028 | 528 | 29 | 2 | 60.3% | 96,901 | 5.4% | 2.0% | 2.4% |
 | New customers | 88 | 40,665 | 308 | 12 | 1 | 54.5% | 40,793 | 2.0% | 0.5% | 1.0% |
-| Promising | 178 | 54,491 | 242 | 50 | 1 | 44.9% | 48,859 | 4.1% | 0.7% | 1.2% |
+| Promising | 177 | 54,491 | 243 | 50 | 1 | 45.2% | 48,859 | 4.1% | 0.7% | 1.2% |
 | Need attention | 177 | 122,225 | 516 | 119 | 2 | 51.4% | 59,805 | 4.1% | 1.6% | 1.5% |
 | About to sleep | 271 | 88,728 | 240 | 102 | 1 | 33.6% | 46,427 | 6.3% | 1.1% | 1.1% |
 | Can't lose them | 45 | 150,845 | 1,694 | 190 | 6 | 60.0% | 41,116 | 1.0% | 2.0% | 1.0% |
 | At risk | 675 | 565,706 | 619 | 208 | 2 | 45.9% | 212,125 | 15.6% | 7.3% | 5.2% |
-| Hibernating | 1,016 | 355,441 | 245 | 238 | 1 | 30.3% | 171,274 | 23.5% | 4.6% | 4.2% |
+| Hibernating | 1,015 | 355,441 | 245 | 238 | 1 | 30.3% | 171,274 | 23.5% | 4.6% | 4.2% |
 
 ## 4. Choosing k (fit snapshot)
 
@@ -60,20 +60,20 @@ Profiles at the test snapshot:
 | 1 | recent, frequent, high spend | 569 | 4,590,723 | 3,942 | 13 | 11 | 96.0% | 2,554,301 | 13.2% | 59.4% | 62.2% |
 | 2 | lapsing, regular, high spend | 1,361 | 2,223,066 | 1,238 | 90 | 4 | 69.4% | 1,014,580 | 31.5% | 28.7% | 24.7% |
 | 3 | recent, regular, mid spend | 398 | 262,933 | 569 | 13 | 2 | 68.1% | 195,524 | 9.2% | 3.4% | 4.8% |
-| 4 | lapsed, infrequent, low spend | 1,988 | 657,684 | 290 | 203 | 1 | 35.4% | 339,261 | 46.1% | 8.5% | 8.3% |
+| 4 | lapsed, infrequent, low spend | 1,986 | 657,684 | 290 | 203 | 1 | 35.4% | 339,261 | 46.0% | 8.5% | 8.3% |
 
 ## 5. Out-of-time validation (scored on the test snapshot's next six months)
 
 | label | segments | repeat auc | repeat auc low | repeat auc high | spend spearman | spend spearman low | spend spearman high |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| RFM named segments (10) | 10 | 0.758 | 0.744 | 0.773 | 0.522 | 0.497 | 0.544 |
-| K-means segments (4) | 4 | 0.735 | 0.721 | 0.747 | 0.554 | 0.528 | 0.575 |
-| RFM score total (3-15) | 13 | 0.780 | 0.767 | 0.792 | 0.590 | 0.567 | 0.609 |
-| Spend deciles only (10) | 10 | 0.751 | 0.737 | 0.764 | 0.584 | 0.559 | 0.605 |
-| Recency score only (5) | 5 | 0.722 | 0.708 | 0.736 | 0.448 | 0.421 | 0.473 |
-| BG/NBD per customer (no segments) |  | 0.777 | 0.764 | 0.790 | 0.599 | 0.577 | 0.621 |
+| RFM named segments (10) | 10 | 0.758 | 0.744 | 0.773 | 0.522 | 0.500 | 0.546 |
+| K-means segments (4) | 4 | 0.734 | 0.721 | 0.748 | 0.553 | 0.530 | 0.577 |
+| RFM score total (3-15) | 13 | 0.780 | 0.767 | 0.793 | 0.590 | 0.569 | 0.611 |
+| Spend deciles only (10) | 10 | 0.751 | 0.737 | 0.765 | 0.584 | 0.561 | 0.607 |
+| Recency score only (5) | 5 | 0.722 | 0.706 | 0.736 | 0.448 | 0.422 | 0.472 |
+| BG/NBD per customer (no segments) |  | 0.777 | 0.762 | 0.791 | 0.598 | 0.576 | 0.620 |
 
-BG/NBD fitted on purchase history before 2011-06-01: r = 0.952, alpha = 12.129, a = 0.170, b = 8.170.
+BG/NBD fitted on purchase history before 2011-06-01: r = 0.952, alpha = 12.125, a = 0.169, b = 8.132.
 
 RFM segment repeat rates, learned at the fit snapshot vs observed at the test snapshot:
 
@@ -83,12 +83,12 @@ RFM segment repeat rates, learned at the fit snapshot vs observed at the test sn
 | Loyal | 698 | 78.1% | 1,216 | 934 | 78.5% | 1,071 |
 | Potential loyalists | 466 | 48.3% | 318 | 234 | 60.3% | 414 |
 | New customers | 108 | 36.1% | 206 | 88 | 54.5% | 464 |
-| Promising | 177 | 28.8% | 158 | 178 | 44.9% | 274 |
+| Promising | 177 | 28.8% | 158 | 177 | 45.2% | 276 |
 | Need attention | 299 | 46.2% | 226 | 177 | 51.4% | 338 |
 | About to sleep | 261 | 28.4% | 111 | 271 | 33.6% | 171 |
 | Can't lose them | 100 | 60.0% | 590 | 45 | 60.0% | 914 |
 | At risk | 729 | 40.7% | 268 | 675 | 45.9% | 314 |
-| Hibernating | 866 | 19.6% | 96 | 1,016 | 30.3% | 169 |
+| Hibernating | 866 | 19.6% | 96 | 1,015 | 30.3% | 169 |
 
 ## 6. Migration, December 2010 to June 2011 (row shares)
 
@@ -97,7 +97,7 @@ RFM segment repeat rates, learned at the fit snapshot vs observed at the test sn
 | Champions | 43% | 40% | 0% | 0% | 0% | 0% | 0% | 2% | 14% | 0% | 0% |
 | Loyal | 30% | 44% | 1% | 0% | 0% | 1% | 0% | 4% | 19% | 2% | 0% |
 | Potential loyalists | 11% | 28% | 2% | 0% | 0% | 3% | 0% | 0% | 40% | 16% | 0% |
-| New customers | 5% | 12% | 6% | 0% | 0% | 8% | 0% | 0% | 6% | 64% | 0% |
+| New customers | 5% | 12% | 6% | 0% | 0% | 8% | 0% | 0% | 6% | 63% | 1% |
 | Promising | 8% | 8% | 5% | 0% | 0% | 8% | 0% | 0% | 1% | 71% | 1% |
 | Need attention | 11% | 19% | 3% | 0% | 0% | 9% | 0% | 0% | 33% | 25% | 0% |
 | About to sleep | 3% | 6% | 8% | 0% | 0% | 9% | 0% | 0% | 2% | 71% | 0% |

@@ -26,6 +26,7 @@ def _style() -> None:
         "axes.edgecolor": GRID, "axes.labelcolor": INK2, "xtick.color": INK2, "ytick.color": INK2,
         "text.color": INK, "axes.grid": True, "grid.color": GRID, "grid.linewidth": 0.8,
         "axes.spines.top": False, "axes.spines.right": False, "font.size": 10,
+        "font.family": "sans-serif", "font.sans-serif": ["Inter", "DejaVu Sans"],
         "axes.titlesize": 12, "axes.titleweight": "bold", "axes.titlelocation": "left",
         "lines.linewidth": 2, "legend.frameon": False,
     })
